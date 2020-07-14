@@ -8,6 +8,8 @@ export const setCountries = payload => action(SET_COUNTRIES, payload);
 
 export const GET_WEATHER = 'GET_WEATHER';
 export const SET_WEATHER = 'SET_WEATHER';
+export const CLEAR_WEATHER = 'CLEAR_WEATHER';
 export const getWeather = payload => action(GET_WEATHER, payload);
 export const setWeather = payload => action(SET_WEATHER, payload);
+export const clearWeather = () => action(CLEAR_WEATHER);
 

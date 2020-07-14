@@ -1,0 +1,13 @@
+.capital-list {
+    padding: 20px 0;
+}
+
+.capital {
+    padding: 5px 0;
+    cursor: pointer;
+}
+
+.weather-condition {
+    display: flex;
+    align-items: center;
+}

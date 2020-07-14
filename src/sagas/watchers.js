@@ -6,6 +6,7 @@ export const getCountries = function* (api, action) {
         const payload = {
             q: action.payload,
         }
+        yield put(actions.clearWeather());
         const countries = yield call(api.getCountries, payload);
         yield put(actions.setCountries(countries));
     } catch (e) {
