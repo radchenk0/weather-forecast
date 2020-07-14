@@ -1,16 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import { Provider } from 'react-redux';
 import Api from './api';
+import configStore from './store';
+import reducer from './reducers';
+import saga from './sagas';
+import * as actions from './actions';
+
+import App from './App';
 import './assets/index.css';
 
+const store = configStore(reducer);
 const api = new Api();
+store.runSaga(saga, api)
 
-api.getCountries({q: 'russia'})
-    .then(countries => api.getWeather({q: countries[0].capital.toLowerCase()}))
-    .then(weather => console.log(weather));
+store.dispatch(actions.getCountries('russia'));
+store.dispatch(actions.getWeather('moscow'));
 
 ReactDOM.render(
-    <App />,
+    <Provider store={store}>
+        <App />
+    </Provider>,
     document.getElementById('root')
 );
